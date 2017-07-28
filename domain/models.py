@@ -13,13 +13,10 @@ class Paster(db.Model):
     pub_date = db.Column(db.DateTime)
     upd_date = db.Column(db.DateTime)
 
-    def __init__(self, title, code, slug_title=None,
-                 pub_date=None, upd_date=None):
+    def __init__(self, title, code, pub_date=None, upd_date=None):
         self.title = title
         self.code = code
-        if slug_title is None:
-            slug_title = slugify(title)
-        self.slug_title = slug_title
+        self.slug_title = slugify(title)
         if pub_date is None:
             pub_date = datetime.utcnow()
         self.pub_date = pub_date
